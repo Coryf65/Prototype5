@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class Targets : MonoBehaviour
 {
-
     private Rigidbody targetRb = null;
+    private float minSpeed = 12f;
+    private float maxSpeed = 16f;
+    private float maxTorgue = 10f;
+    private float xRange = 4f;
+    private float ySpawnPosition = -6f;
 
     // Start is called before the first frame update
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
+        FlingAndSpinObject();
+    }
 
-        targetRb.AddForce(Vector3.up * Random.Range(12, 16), ForceMode.Impulse);
-        targetRb.AddTorque(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10), ForceMode.Impulse); // rotation, instant
+    private void FlingAndSpinObject()
+    {
+        targetRb.AddForce(Vector3.up * Random.Range(minSpeed, maxSpeed), ForceMode.Impulse);
+        targetRb.AddTorque(Random.Range(-maxTorgue, maxTorgue), Random.Range(-maxTorgue, maxTorgue), Random.Range(-maxTorgue, maxTorgue), ForceMode.Impulse); // rotation, instant
 
-        transform.position = new Vector3(Random.Range(-4, 4), -6, 0);
+        transform.position = new Vector3(Random.Range(-xRange, xRange), ySpawnPosition, 0);
     }
 
     // Update is called once per frame
