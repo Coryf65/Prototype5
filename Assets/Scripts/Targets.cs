@@ -6,10 +6,10 @@ public class Targets : MonoBehaviour
 {
     private Rigidbody targetRb = null;
     private float minSpeed = 12f;
-    private float maxSpeed = 20f;
+    private float maxSpeed = 16f;
     private float maxTorgue = 10f;
     private float xRange = 4f;
-    private float ySpawnPosition = -6f;
+    private float ySpawnPosition = -2f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,19 @@ public class Targets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    // Player clicked this target
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // we have a gameobject with a collider the only one
+        // so once a target touches the "Sensor" delete it
+        Destroy(gameObject);
     }
 }
