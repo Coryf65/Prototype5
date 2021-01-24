@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets = null;
     public TextMeshProUGUI scoreText = null;
     public TextMeshProUGUI gameOverText = null;
+    public GameObject background = null;
     public bool isGameOver = false;
 
     private float spawnRate = 1.0f; // every second
@@ -46,5 +48,19 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         isGameOver = true;
+        FadeOutBackgorund();
+    }
+
+    /// <summary>
+    /// Restart the current Game Scene
+    /// </summary>
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void FadeOutBackgorund()
+    {
+        background.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
     }
 }
