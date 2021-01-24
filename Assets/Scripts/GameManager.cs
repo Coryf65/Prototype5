@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Canvas Titlecanvas = null;
     public List<GameObject> targets = null;
     public TextMeshProUGUI scoreText = null;
     public TextMeshProUGUI gameOverText = null;
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        Titlecanvas.gameObject.SetActive(false);
+
         // start spawning
         StartCoroutine(SpawnTargets());
         // display init score
