@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets = null;
     public TextMeshProUGUI scoreText = null;
+    public TextMeshProUGUI gameOverText = null;
     
     private float spawnRate = 1.0f; // every second
     private int score = 0;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTargets());
-        UpdateScore(0);
+        UpdateScore(0);       
     }
 
     IEnumerator SpawnTargets()
@@ -35,5 +36,13 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
 
         scoreText.text = $"Score: {score}";
+    }
+
+    /// <summary>
+    ///  the Game is Over display GO screen and restart button
+    /// </summary>
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
     }
 }

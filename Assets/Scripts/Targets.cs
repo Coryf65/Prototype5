@@ -44,5 +44,12 @@ public class Targets : MonoBehaviour
         // we have a gameobject with a collider the only one
         // so once a target touches the "Sensor" delete it
         Destroy(gameObject);
+
+        // If any Good Target crosses the border line, Gameover
+        if (!gameObject.CompareTag("Bad Target"))
+        {
+            gameManager.GameOver();
+        }
+
     }
 }
