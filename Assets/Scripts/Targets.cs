@@ -5,6 +5,7 @@ using UnityEngine;
 public class Targets : MonoBehaviour
 {
     private Rigidbody targetRb = null;
+    private GameManager gameManager = null;
     private float minSpeed = 12f;
     private float maxSpeed = 16f;
     private float maxTorgue = 10f;
@@ -15,6 +16,7 @@ public class Targets : MonoBehaviour
     void Start()
     {
         targetRb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         FlingAndSpinObject();
     }
 
@@ -26,16 +28,11 @@ public class Targets : MonoBehaviour
         transform.position = new Vector3(Random.Range(-xRange, xRange), ySpawnPosition, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Player clicked this target
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        gameManager.UpdateScore(5);
     }
 
     private void OnTriggerEnter(Collider other)

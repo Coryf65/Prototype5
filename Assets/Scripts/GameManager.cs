@@ -15,13 +15,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTargets());
-        scoreText.text = $"Score: {score}";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UpdateScore(0);
     }
 
     IEnumerator SpawnTargets()
@@ -33,7 +27,13 @@ public class GameManager : MonoBehaviour
 
             int index = Random.Range(0, targets.Count);
             Instantiate(targets[index]);
-        }
-        
+        }        
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+
+        scoreText.text = $"Score: {score}";
     }
 }
