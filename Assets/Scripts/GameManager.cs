@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets = null;
     public TextMeshProUGUI scoreText = null;
     public TextMeshProUGUI gameOverText = null;
-    
+    public bool isGameOver = false;
+
     private float spawnRate = 1.0f; // every second
     private int score = 0;
 
@@ -16,13 +17,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTargets());
-        UpdateScore(0);       
+        UpdateScore(0);
     }
 
     IEnumerator SpawnTargets()
     {
         // spawn until
-        while (true)
+        while (!isGameOver)
         {
             yield return new WaitForSeconds(spawnRate);
 
@@ -44,5 +45,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
+        isGameOver = true;
     }
 }
