@@ -5,6 +5,7 @@ using UnityEngine;
 public class Targets : MonoBehaviour
 {
     public int pointValue = 0;
+    public ParticleSystem explosionParticle = null;
 
     private Rigidbody targetRb = null;
     private GameManager gameManager = null;
@@ -34,6 +35,7 @@ public class Targets : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
         gameManager.UpdateScore(pointValue);
     }
 
