@@ -18,8 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnTargets());
-        UpdateScore(0);
+        
     }
 
     IEnumerator SpawnTargets()
@@ -49,6 +48,14 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         isGameOver = true;
         FadeOutBackgorund();
+    }
+
+    public void StartGame()
+    {
+        // start spawning
+        StartCoroutine(SpawnTargets());
+        // display init score
+        UpdateScore(0);
     }
 
     /// <summary>
