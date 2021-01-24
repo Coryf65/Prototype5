@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Targets : MonoBehaviour
 {
+    public int pointValue = 0;
+
     private Rigidbody targetRb = null;
     private GameManager gameManager = null;
     private float minSpeed = 12f;
@@ -32,7 +34,7 @@ public class Targets : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
-        gameManager.UpdateScore(5);
+        gameManager.UpdateScore(pointValue);
     }
 
     private void OnTriggerEnter(Collider other)
