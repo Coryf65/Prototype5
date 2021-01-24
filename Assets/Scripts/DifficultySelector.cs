@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DifficultySelector : MonoBehaviour
 {
+    public int difficulty = 0;
+    
     private Button button = null;
     private GameManager gameManager = null;
 
@@ -17,6 +19,6 @@ public class DifficultySelector : MonoBehaviour
 
     void SetDifficulty()
     {
-        gameManager.StartGame();
+        gameManager.StartGame(difficulty);
     }
 }

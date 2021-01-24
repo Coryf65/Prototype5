@@ -51,9 +51,11 @@ public class GameManager : MonoBehaviour
         FadeOutBackgorund();
     }
 
-    public void StartGame()
+    public void StartGame(int difficulty)
     {
         Titlecanvas.gameObject.SetActive(false);
+
+        spawnRate /= difficulty;
 
         // start spawning
         StartCoroutine(SpawnTargets());
